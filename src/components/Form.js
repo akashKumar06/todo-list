@@ -15,7 +15,7 @@ function Form({onSubmit}) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" onChange={handleChange} />
+      <input type="text" id='name' name='name' onChange={handleChange} />
       <button>Add Item</button>
     </form>
   );
