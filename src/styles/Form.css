@@ -1,0 +1,17 @@
+form{
+    margin:4rem auto;
+    width:80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form input{
+    width: 50%;
+    font-size:2rem;
+    font-family: 'Pangolin', cursive;
+}
+form button{
+    width: 50%;
+    font-size: 2rem;
+    font-family: 'Pangolin', cursive;
+}
