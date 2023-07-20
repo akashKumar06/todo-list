@@ -1,22 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/Form.css";
 
-function Form({onSubmit}) {
-  const [data, setData] = useState({});
+function Form({onEdit, onSubmit, editItem }) {
+  const initialData = { name: "", id: 1 };
+  const [data, setData] = useState(initialData);
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
-    onSubmit({...data,id:Math.floor(Math.random()*100 + 1)});
+    if (editItem) {
+      onEdit(data)
+    } else {
+      if(data.name!==''){
+        onSubmit(data);
+      }
+    }
+    setData(initialData);
   }
 
   function handleChange(e) {
-    setData({...data,[e.target.name]: e.target.value})
+    setData({ ...data, [e.target.name]: e.target.value });
   }
+
+  useEffect(() => {
+    if(editItem){
+      setData(editItem);
+    }
+  }, [editItem]);
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" id='name' name='name' onChange={handleChange} />
-      <button>Add Item</button>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value={data.name}
+        onChange={handleChange}
+      />
+      <button>{editItem ? 'Edit Item' :'Add Item'}</button>
     </form>
   );
 }

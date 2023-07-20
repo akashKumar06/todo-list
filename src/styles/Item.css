@@ -1,0 +1,22 @@
+.item{
+    margin:1rem auto;
+    width:90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item button{
+    margin:0 0.2rem;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius:5px ;
+    font-size: 1.3rem;
+    font-family: 'Pangolin', cursive;
+}
+
+.item-name{
+    width:70%;
+}

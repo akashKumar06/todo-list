@@ -15,3 +15,7 @@ form button{
     font-size: 2rem;
     font-family: 'Pangolin', cursive;
 }
+
+.red-border{
+    border: 2px solid red;
+}
