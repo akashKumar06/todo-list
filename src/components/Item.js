@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import '../styles/Item.css';
 
-function Item({item,onClose,id, onEdit,onUp,onDown}){
+function Item({item,onClose,id, onEdit,onUp,onDown,onComplete}){
+    const [status,setStatus] = useState(false);
     function handleCloseButton(){
         onClose(id);
     }
@@ -16,9 +18,13 @@ function Item({item,onClose,id, onEdit,onUp,onDown}){
     function handleDownButton(){
         onDown(item)
     }
+    function handleComplete(){
+        setStatus(!status);
+        onComplete();
+    }
     return(
         <div className="item">
-            <button className='item-name'>{item.name}</button>
+            <button className={`item-name ${status === false?'': 'clicked'}`} onClick={handleComplete}>{item.name}</button>
             <button className='up-button' onClick={handleUpButton}>UP</button>
             <button className='down-button' onClick={handleDownButton}>DOWN</button>
             <button className='edit-button' onClick={handleEditButton}>Edit</button>

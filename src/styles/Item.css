@@ -52,5 +52,11 @@
 
 .item-name:hover{
     background-color: rgb(241, 194, 106);
+    color:white;
     box-shadow: 2px 3px 10px rgb(177, 143, 79);
+}
+
+.clicked{
+    background-color: rgb(186, 255, 117);
+    box-shadow: 2px 3px 10px rgb(142, 196, 87);
 }

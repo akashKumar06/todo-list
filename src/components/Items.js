@@ -1,5 +1,5 @@
 import Item from "./Item";
-function Items({ items, onClose, onEdit, onUp, onDown}) {
+function Items({ items, onClose, onEdit, onUp, onDown,onComplete}) {
   return (
     <div>
       {items.map((item) => (
@@ -10,6 +10,7 @@ function Items({ items, onClose, onEdit, onUp, onDown}) {
           onEdit={onEdit}
           onUp={onUp}
           onDown={onDown}
+          onComplete={onComplete}
           item={item}
         />
       ))}

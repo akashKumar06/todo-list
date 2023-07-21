@@ -6,6 +6,8 @@ import Items from "./components/Items";
 function App() {
   const [items, setItems] = useState([]);
   const [editItem, setEditItem] = useState(null);
+  const [itemCount,setItemCount] = useState(0);
+  const [completeCount,setCompleteCount] = useState(0);
 
   function handleClose(id) {
     const updatedItems = items.filter((item) => item.id !== id);
@@ -44,6 +46,10 @@ function App() {
   }
   function handleSubmit(item) {
     setItems([...items, { ...item, id: Math.floor(Math.random() * 100 + 1) }]);
+    setItemCount((prevData) => (prevData + 1));
+  }
+  function handleComplete(){
+    setCompleteCount((prevData) => (prevData + 1));
   }
   return (
     <div className="App">
@@ -53,8 +59,10 @@ function App() {
         editItem={editItem}
         onEdit={handleEditItem}
       />
+      <h2>Completed Items: {completeCount} / {itemCount}</h2>
       <Items
         items={items}
+        onComplete={handleComplete}
         onClose={handleClose}
         onEdit={handleEdit}
         onUp={handleUp}
