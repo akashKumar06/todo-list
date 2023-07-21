@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import "../styles/Form.css";
 
-function Form({onEdit, onSubmit, editItem }) {
+function Form({ onEdit, onSubmit, editItem }) {
   const initialData = { name: "", id: 1 };
   const [data, setData] = useState(initialData);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (editItem) {
-      onEdit(data)
+      onEdit(data);
     } else {
-      if(data.name!==''){
+      if (data.name !== "") {
         onSubmit(data);
       }
     }
@@ -22,7 +22,7 @@ function Form({onEdit, onSubmit, editItem }) {
   }
 
   useEffect(() => {
-    if(editItem){
+    if (editItem) {
       setData(editItem);
     }
   }, [editItem]);
@@ -30,13 +30,16 @@ function Form({onEdit, onSubmit, editItem }) {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        placeholder="Enter Item"
         type="text"
         id="name"
         name="name"
         value={data.name}
         onChange={handleChange}
       />
-      <button>{editItem ? 'Edit Item' :'Add Item'}</button>
+      <button className="submit-button">
+        {editItem ? "Edit Item" : "Add Item"}
+      </button>
     </form>
   );
 }

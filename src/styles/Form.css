@@ -19,3 +19,7 @@ form button{
 .red-border{
     border: 2px solid red;
 }
+
+.submit-button{
+    background-color: rgb(144, 243, 144);
+}

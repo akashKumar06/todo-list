@@ -19,10 +19,10 @@ function Item({item,onClose,id, onEdit,onUp,onDown}){
     return(
         <div className="item">
             <button className='item-name'>{item.name}</button>
-            <button onClick={handleUpButton}>UP</button>
-            <button onClick={handleDownButton}>DOWN</button>
-            <button onClick={handleEditButton}>Edit</button>
-            <button onClick={handleCloseButton}>X</button>
+            <button className='up-button' onClick={handleUpButton}>UP</button>
+            <button className='down-button' onClick={handleDownButton}>DOWN</button>
+            <button className='edit-button' onClick={handleEditButton}>Edit</button>
+            <button className='close-button' onClick={handleCloseButton}>X</button>
         </div>
     )
 }
