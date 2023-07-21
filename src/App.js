@@ -12,6 +12,11 @@ function App() {
   function handleClose(id) {
     const updatedItems = items.filter((item) => item.id !== id);
     setItems(updatedItems);
+    setItemCount(updatedItems.length);
+    setCompleteCount(updatedItems.length);
+
+    const completedItems = updatedItems.filter((item)=> item.status === 'completed');
+    setCompleteCount(completedItems.length)
   }
 
   function handleEditItem(item) {
@@ -46,10 +51,22 @@ function App() {
   }
   function handleSubmit(item) {
     setItems([...items, { ...item, id: Math.floor(Math.random() * 100 + 1) }]);
-    setItemCount((prevData) => (prevData + 1));
+    setItemCount(items.length + 1);
   }
-  function handleComplete(){
-    setCompleteCount((prevData) => (prevData + 1));
+  function handleComplete(item){
+    const index = items.findIndex((e) => e.id === item.id);
+    let newItem = {};
+    if(item.status === 'completed'){
+      newItem = {...item,status:'not-completed'}
+    }else{
+      newItem = {...item,status:'completed'}
+    }
+    const newItems = [...items];
+    newItems.splice(index,1,newItem);
+    setItems(newItems);
+  
+    const completedItems = newItems.filter((item)=> item.status === 'completed');
+    setCompleteCount(completedItems.length)
   }
   return (
     <div className="App">
