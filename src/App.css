@@ -1,8 +1,18 @@
+
 .App h1{
   font-size: 3rem;
   text-align: center;
 }
 
 .App h2{
+  text-align: center;
+}
+
+.App h5{
+  width:15rem;
+  padding:3px;
+  margin: 5px auto;
+  background-color: rgb(252, 195, 90);
+  border-radius: 20px;
   text-align: center;
 }
