@@ -3,6 +3,7 @@ import "./App.css";
 
 import Form from "./components/Form";
 import Items from "./components/Items";
+import Button from "./components/Button";
 function App() {
   const [items, setItems] = useState([]);
   const [editItem, setEditItem] = useState(null);
@@ -52,7 +53,7 @@ function App() {
     }
   }
   function handleSubmit(item) {
-    setItems([...items, { ...item, id: Math.floor(Math.random() * 100 + 1) }]);
+    setItems([...items, { ...item, id:(Math.random()).toString()}]);
     setItemCount(items.length + 1);
   }
   function handleComplete(item) {
@@ -92,6 +93,7 @@ function App() {
         onUp={handleUp}
         onDown={handleDown}
       />
+      <Button>Styled Components</Button>
     </div>
   );
 }

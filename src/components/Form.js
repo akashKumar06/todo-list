@@ -5,12 +5,16 @@ function Form({ onEdit, onSubmit, editItem }) {
   const initialData = { name: "", id: 1 };
   const [data, setData] = useState(initialData);
 
+  const [isValid,setIsValid] = useState(true);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (editItem) {
       onEdit(data);
     } else {
-      if (data.name !== "") {
+      if (data.name.trim().length === 0) {
+        setIsValid(false);
+      }else{
         onSubmit(data);
       }
     }
@@ -18,6 +22,9 @@ function Form({ onEdit, onSubmit, editItem }) {
   }
 
   function handleChange(e) {
+    if(e.target.value.trim().length > 0 ){
+      setIsValid(true);
+    }
     setData({ ...data, [e.target.name]: e.target.value });
   }
 
@@ -26,6 +33,14 @@ function Form({ onEdit, onSubmit, editItem }) {
       setData(editItem);
     }
   }, [editItem]);
+
+  let btnStyle = {};
+  if(!isValid){
+    btnStyle= {
+      border: '2px solid red',
+      backgroundColor: 'rgb(248, 154, 154)'
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -36,11 +51,13 @@ function Form({ onEdit, onSubmit, editItem }) {
         name="name"
         value={data.name}
         onChange={handleChange}
+        style={btnStyle}
       />
       <button className="submit-button">
         {editItem ? "Edit Item" : "Add Item"}
       </button>
     </form>
+    
   );
 }
 
